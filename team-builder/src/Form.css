@@ -1,0 +1,26 @@
+form{
+    display:flex;
+    flex-direction: column;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 20px;
+    background-color: antiquewhite;
+}
+
+form input{
+    margin: 10px;
+}
+
+form button{
+    padding: 10px;
+    background-color: lightcyan;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    width: 100px;
+    margin: 10px auto;
+}
+
+form button:hover{
+    background-color: aqua;
+}

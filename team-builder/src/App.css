@@ -1,0 +1,27 @@
+.App {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.Team__Cards {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-wrap: wrap;
+  max-width: 1000px;
+}
+
+.Member__Box {
+  border: 2px solid darkgrey;
+  border-radius: 15px;
+  width: 300px;
+  margin: 20px;
+  padding-left: 20px;
+  background-color: #eeda28;
+  opacity: 0.7;
+  box-shadow: 5px 5px lightgrey;
+  font-weight: 600;
+}
