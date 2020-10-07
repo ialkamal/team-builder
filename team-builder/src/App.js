@@ -21,6 +21,11 @@ function App() {
 
   const editMember = (editableMember) => {
     document.querySelector(".Add__Button").textContent = "Save";
+    const editButtons = document.querySelectorAll(".edit");
+
+    editButtons.forEach((button) => {
+      button.disabled = true;
+    });
 
     setMemberToEdit(editableMember);
 
@@ -45,6 +50,12 @@ function App() {
     setMemberToEdit("");
 
     document.querySelector(".Add__Button").textContent = "Add";
+
+    const editButtons = document.querySelectorAll(".edit");
+
+    editButtons.forEach((button) => {
+      button.disabled = false;
+    });
   };
 
   return (
@@ -61,7 +72,10 @@ function App() {
               <p>Name: {member.name}</p>
               <p>Email: {member.email}</p>
               <p>Role: {member.role}</p>
-              <button onClick={() => editMember({ ...member, isEditing: 1 })}>
+              <button
+                className="edit"
+                onClick={() => editMember({ ...member, isEditing: 1 })}
+              >
                 Edit
               </button>
             </div>
