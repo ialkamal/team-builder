@@ -10,49 +10,42 @@ function App() {
       name: "Ismail",
       email: "ismail@nawatt.com",
       role: "founder",
-      isEditing: 0,
     },
   ]);
   const [memberToEdit, setMemberToEdit] = useState("");
 
+  // Add new member
   const addMember = (newMember) => {
     setMembers([...members, newMember]);
   };
 
+  // Edit an existing member
   const editMember = (editableMember) => {
     document.querySelector(".Add__Button").textContent = "Save";
+    
     const editButtons = document.querySelectorAll(".edit");
-
     editButtons.forEach((button) => {
       button.disabled = true;
     });
 
     setMemberToEdit(editableMember);
-
-    let membersToEdit = [...members];
-    membersToEdit = members.map((member) => {
-      if (editableMember.id === member.id) {
-        return editableMember;
-      } else return member;
-    });
-    setMembers(membersToEdit);
   };
 
-  const saveMember = (editableMember) => {
-    let membersToEdit = [...members];
-    membersToEdit = members.map((member) => {
-      if (member.isEditing === 1) {
-        return editableMember;
+  // Save an edited member
+  const saveMember = (editedMember) => {
+    let membersWithNewEdit = [...members];
+    membersWithNewEdit = members.map((member) => {
+      if (editedMember.id === member.id) {
+        return editedMember;
       } else return member;
     });
-    setMembers(membersToEdit);
+    setMembers(membersWithNewEdit);
 
     setMemberToEdit("");
 
     document.querySelector(".Add__Button").textContent = "Add";
 
     const editButtons = document.querySelectorAll(".edit");
-
     editButtons.forEach((button) => {
       button.disabled = false;
     });
@@ -72,10 +65,7 @@ function App() {
               <p>Name: {member.name}</p>
               <p>Email: {member.email}</p>
               <p>Role: {member.role}</p>
-              <button
-                className="edit"
-                onClick={() => editMember({ ...member, isEditing: 1 })}
-              >
+              <button className="edit" onClick={() => editMember(member)}>
                 Edit
               </button>
             </div>
