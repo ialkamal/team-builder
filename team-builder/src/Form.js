@@ -7,7 +7,6 @@ const Form = (props) => {
     name: "",
     email: "",
     role: "",
-    isEditing: 0,
   });
 
   useEffect(() => {
@@ -18,21 +17,19 @@ const Form = (props) => {
     setMember({
       ...member,
       [e.target.name]: e.target.value,
-      isEditing: 0,
-      id: Date.now(),
     });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    props.addMember(member);
-    setMember({ id: "", name: "", email: "", role: "", isEditing: 0 });
+    props.addMember({ ...member, id: Date.now() });
+    setMember({ id: "", name: "", email: "", role: "" });
   };
 
   const handleEdit = (e) => {
     e.preventDefault();
     props.saveMember(member);
-    setMember({ id: "", name: "", email: "", role: "", isEditing: 0 });
+    setMember({ id: "", name: "", email: "", role: "" });
   };
 
   return (
